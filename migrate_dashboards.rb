@@ -3,7 +3,7 @@ require 'http'
 require 'json'
 require 'optparse'
 
-# This function backups all graphite dashboards and saves them to the text file
+# This function backups all graphite dashboards and prints them to stdout 
 def backup_dashboards(http_auth, graphite_server)
   board_names = JSON.parse(http_auth.post("#{graphite_server}/dashboard/find/", form: {query:''}).to_s)['dashboards'].map{|n|n['name']}
 
